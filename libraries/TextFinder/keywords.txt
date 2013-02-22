@@ -1,0 +1,23 @@
+#######################################
+# Syntax Coloring Map for TextFinder
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+TextFinder	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+find	KEYWORD2
+findUntil	KEYWORD2
+getValue	KEYWORD2
+getFloat	KEYWORD2
+getString	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################

@@ -1,4 +1,4 @@
-ATEM_Wireless_Tally_Light
+ATEM Wireless Tally Light
 =========================
 
 Wireless tally light system for ATEM switchers.
