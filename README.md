@@ -25,7 +25,7 @@ A transmitter transmits ATEM PROGRAM and PREVIEW camera numbers using an RF12 ra
 	Switcher IP		: 192.168.1.240
 	Switcher PORT	: 49910
 
-The settings can be modified using the web interface (by visiting the transmitter's IP) or reset using the RESET button on the transmitter.
+The settings can be modified using the web interface [http://192.168.1.234/](http://192.168.1.234/) or reset using the RESET button on the transmitter.
 
 ### LED States
 
