@@ -4,7 +4,7 @@ Wireless tally light system for ATEM switchers.
 
 ## Setup and Configuration
 
-Note: We're assuming that you have a transmitter board with the Arduino Ethernet and also a receiver board with a JeeNode.
+Note: We're assuming that you have a transmitter board with the Arduino Ethernet and also a receiver board with a JeeNode. If not, visit [http://kvitko.com/tally](http://kvitko.com/tally).
 
 1.  Copy the dependent libraries from the project's libraries directory to your systems Arduino libraries directory. You may need to overwrite some of the libraries.
 1.  Upload `ATEM_Tally_Receiver.ino` to your receiver node.
