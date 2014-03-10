@@ -70,4 +70,4 @@ Based on the [Arduino ATEM Library](https://github.com/kasperskaarhoj/Arduino-Li
 
 ## Contributing
 
-We welcome any contributions and bug fixes. Feel free to send push requests.
+We welcome any contributions and bug fixes. Feel free to send pull requests.
