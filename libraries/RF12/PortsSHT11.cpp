@@ -21,7 +21,7 @@ enum {
     RESET        = 0x1e,
 };
 
-static uint8_t crcTab [] PROGMEM = {
+const static uint8_t crcTab [] PROGMEM = {
     0, 49, 98, 83, 196, 245, 166, 151, 185, 136, 219, 234, 125, 76, 31, 46, 67,
     114, 33, 16, 135, 182, 229, 212, 250, 203, 152, 169, 62, 15, 92, 109, 134,
     183, 228, 213, 66, 115, 32, 17, 63, 14, 93, 108, 251, 202, 153, 168, 197,
@@ -152,10 +152,11 @@ void SHT11::writeStatus(uint8_t value) const {
     writeByte(value);
 }
 
-/**Take a measurement.
- * @param type SHT11::TEMP or SHT11::HUMI
- * @param delayFun Optional: Function used to wait a certain period before resetting the connection.
- * @return raw sensor value
+/** Take a measurement.
+ *  @param type SHT11::TEMP or SHT11::HUMI
+ *  @param delayFun Optional: Function used to wait a certain period before
+ *                              resetting the connection.
+ *  @return raw sensor value
  */
 uint8_t SHT11::measure(uint8_t type, void (*delayFun)()) {
     start();
@@ -183,10 +184,10 @@ uint8_t SHT11::measure(uint8_t type, void (*delayFun)()) {
     return 1;
 }
 
-#ifndef __AVR_ATtiny84__ || __AVR_ATtiny44__
-/**Calculate the current relative humidity and temperature.
- * @param rh_true Variable to store the true relative humidity into.
- * @param t_c Variable to store the temperature in degree celcius into.
+#if !defined(__AVR_ATtiny84__) && !defined(__AVR_ATtiny44__)
+/** Calculate the current relative humidity and temperature.
+ *  @param rh_true Variable to store the true relative humidity into.
+ *  @param t_C Variable to store the temperature in degree celcius into.
  */
 void SHT11::calculate(float& rh_true, float& t_C) const {
     const float C1=-2.0468;
@@ -203,10 +204,10 @@ void SHT11::calculate(float& rh_true, float& t_C) const {
     if (rh_true < 0.1) rh_true = 0.1;
 } 
 
-/**Calculate the current dewpoint based on h and t.
- * @param h The relative humidity.
- * @param t The temperature.
- * @return The dewpoint in degrees C.
+/** Calculate the current dewpoint based on h and t.
+ *  @param h The relative humidity.
+ *  @param t The temperature.
+ *  @return The dewpoint in degrees C.
  */
 float SHT11::dewpoint(float h, float t) {
     float k = (log10(h)-2)/0.4343 + (17.62*t)/(243.12+t); 

@@ -156,8 +156,8 @@ void ATEMTally::change_LED_state(int state) {
 	}
   
 	analogWrite(R_PIN, r_value);
-  	analogWrite(G_PIN, g_value);
-  	analogWrite(B_PIN, b_value);
+	analogWrite(G_PIN, g_value);
+	analogWrite(B_PIN, b_value);
 }
 
 /*
@@ -172,22 +172,22 @@ void ATEMTally::print_buffer(EthernetClient& client, const prog_char** s, int i,
 	memset(buffer,0,100);
 
 	char* html_segment = (char*)pgm_read_word(s);
-    int len = strlen_P(html_segment);
+	int len = strlen_P(html_segment);
 
-    while (total <= len) {
-      strncpy_P(buffer, html_segment+start, 100-1);
+	while (total <= len) {
+		strncpy_P(buffer, html_segment+start, 100-1);
 
-	  if (number) {
-      	client.print(i, DEC);
-	  } else if (hex) {
-		client.print(i, HEX);
-	  } else {
-		client.print(buffer);
-	  }
+		if (number) {
+			client.print(i, DEC);
+		} else if (hex) {
+			client.print(i, HEX);
+		} else {
+			client.print(buffer);
+		}
 
-      total = start + 100-1;
-      start = start + 100-1;
-    }
+		total = start + 100-1;
+		start = start + 100-1;
+	}
 }
 
 /*
@@ -244,20 +244,20 @@ void ATEMTally::save_eeprom(TextFinder& finder, byte mac[6], byte ip[4], byte sw
 		}
 	}
 	
-    // Now that we got all the data, we can save it to EEPROM
-    for (int i = 0 ; i < 6; i++){
-      EEPROM.write(i + 1, mac[i]);
-    }
-    for (int i = 0 ; i < 4; i++){
-      EEPROM.write(i + 7, ip[i]);
-    }
-    for (int i = 0 ; i < 4; i++){
-      EEPROM.write(i + 11, switcher_ip[i]); 
-    }
-    ATEMTally::eeprom_write_int(15, switcher_port); // write switcher port (2 bytes) to address 15 & 16
+	// Now that we got all the data, we can save it to EEPROM
+	for (int i = 0 ; i < 6; i++){
+		EEPROM.write(i + 1, mac[i]);
+	}
+	for (int i = 0 ; i < 4; i++){
+		EEPROM.write(i + 7, ip[i]);
+	}
+	for (int i = 0 ; i < 4; i++){
+		EEPROM.write(i + 11, switcher_ip[i]); 
+	}
+	ATEMTally::eeprom_write_int(15, switcher_port); // write switcher port (2 bytes) to address 15 & 16
 
-    // set ID to the known bit, so when you reset the Arduino is will use the EEPROM values
-    EEPROM.write(0, ID);
+	// set ID to the known bit, so when you reset the Arduino is will use the EEPROM values
+	EEPROM.write(0, ID);
 }
 
 /*
@@ -265,11 +265,11 @@ void ATEMTally::save_eeprom(TextFinder& finder, byte mac[6], byte ip[4], byte sw
 */
 
 void ATEMTally::eeprom_write_int(int p_address, int p_value) {
-  	byte lowByte = ((p_value >> 0) & 0xFF);
-  	byte highByte = ((p_value >> 8) & 0xFF);
+	byte lowByte = ((p_value >> 0) & 0xFF);
+	byte highByte = ((p_value >> 8) & 0xFF);
 
-  	EEPROM.write(p_address, lowByte);
-  	EEPROM.write(p_address + 1, highByte);
+	EEPROM.write(p_address, lowByte);
+	EEPROM.write(p_address + 1, highByte);
 }
 
 /*
@@ -277,10 +277,10 @@ void ATEMTally::eeprom_write_int(int p_address, int p_value) {
 */
 
 unsigned int ATEMTally::eeprom_read_int(int p_address) {
-  	byte lowByte = EEPROM.read(p_address);
-  	byte highByte = EEPROM.read(p_address + 1);
+	byte lowByte = EEPROM.read(p_address);
+	byte highByte = EEPROM.read(p_address + 1);
 
-  	return ((lowByte << 0) & 0xFF) + ((highByte << 8) & 0xFF00);
+	return ((lowByte << 0) & 0xFF) + ((highByte << 8) & 0xFF00);
 }
 
 /*
@@ -288,8 +288,8 @@ unsigned int ATEMTally::eeprom_read_int(int p_address) {
 */
 
 void ATEMTally::reset_eeprom() {
-  	for (int i = 0; i < 512; i++)
-    	EEPROM.write(i, 0); 
+	for (int i = 0; i < 512; i++)
+		EEPROM.write(i, 0); 
 }
 
 /*
